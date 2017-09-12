@@ -54,9 +54,10 @@ router.patch("/:id", function(req, res, next) {
 
 router.delete("/:id", function(req, res, next) {
   db.Driver
-    .findByIdAndRemove(req.params.id)
-    .then(function() {
-      res.redirect("/drivers");
+    .findById(req.params.id).then(function(driver){
+      driver.remove().then(function(){
+        res.redirect("/drivers");
+      })
     })
     .catch(function(err) {
       next(err);

@@ -1,0 +1,15 @@
+extends ../base.pug
+
+block content
+  h1 Edit Car
+  form(action=`/drivers/${car.driver.id}/cars/${car.id}?_method=PATCH`, method="POST")
+    p
+      input(type="text", name="make", value=car.make)
+    p
+      input(type="text", name="model", value=car.model)
+    p
+      input(type="number", name="year", value=car.year)
+    p
+      button Edit car
+  form(action=`/drivers/${car.driver.id}/cars/${car.id}?_method=DELETE`, method="POST")
+    button Delete
